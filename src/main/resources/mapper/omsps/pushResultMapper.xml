@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.dao.mapper.PushResultMapper">
+    <resultMap id="BaseResultMap" type="com.example.demo.domain.bean.PushResultTemp">
+        <!--@mbg.generated-->
+        <id column="id" property="id" />
+        <result column="msg_name" property="msgName" />
+        <result column="msg_desc" property="msgDesc" />
+        <result column="user_id" property="userId" />
+        <result column="task_id" property="taskId" />
+        <result column="push_status" property="pushStatus" />
+        <result column="create_time" property="createTime" />
+        <result column="param_value" property="paramValue" />
+        <result column="name" property="name" />
+        <result column="desc" property="desc" />
+        <result column="push_rule_id" property="pushRuleId" />
+    </resultMap>
+    <sql id="Base_Column_List">
+        <!--@mbg.generated-->
+        id, msg_name, msg_desc, user_id, task_id, push_status, create_time, param_value,
+        `name`, `desc`, push_rule_id
+    </sql>
+
+    <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select
+    <include refid="Base_Column_List" />
+    from push_result_temp
+    where id = #{id}
+</select>
+
+    <select id="selectCount" resultType="Integer">
+        <!--@mbg.generated-->
+        select
+        count(1)
+        from push_result_temp
+    </select>
+
+    <select id="selectByLimit" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        <!--@mbg.generated-->
+        select
+        <include refid="Base_Column_List" />
+        from push_result_temp
+        limit #{index},100
+    </select>
+
+    <!--  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">-->
+    <!--    &lt;!&ndash;@mbg.generated&ndash;&gt;-->
+    <!--    delete from push_result_temp-->
+    <!--    where id = #{id,jdbcType=BIGINT}-->
+    <!--  </delete>-->
+    <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="PushResultTemp" useGeneratedKeys="true">
+        <!--@mbg.generated-->
+        insert into push_result_temp
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="msgName != null">
+                msg_name,
+            </if>
+            <if test="msgDesc != null">
+                msg_desc,
+            </if>
+            <if test="userId != null">
+                user_id,
+            </if>
+            <if test="taskId != null">
+                task_id,
+            </if>
+            <if test="pushStatus != null">
+                push_status,
+            </if>
+            <if test="createTime != null">
+                create_time,
+            </if>
+            <if test="paramValue != null">
+                param_value,
+            </if>
+            <if test="name != null">
+                `name`,
+            </if>
+            <if test="desc != null">
+                `desc`,
+            </if>
+            <if test="pushRuleId != null">
+                push_rule_id,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="msgName != null">
+                #{msgName},
+            </if>
+            <if test="msgDesc != null">
+                #{msgDesc},
+            </if>
+            <if test="userId != null">
+                #{userId},
+            </if>
+            <if test="taskId != null">
+                #{taskId},
+            </if>
+            <if test="pushStatus != null">
+                #{pushStatus},
+            </if>
+            <if test="createTime != null">
+                #{createTime},
+            </if>
+            <if test="paramValue != null">
+                #{paramValue},
+            </if>
+            <if test="name != null">
+                #{name},
+            </if>
+            <if test="desc != null">
+                #{desc},
+            </if>
+            <if test="pushRuleId != null">
+                #{pushRuleId},
+            </if>
+        </trim>
+    </insert>
+</mapper>

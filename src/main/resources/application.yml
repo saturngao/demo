@@ -1,0 +1,48 @@
+server:
+  port: 8090
+  http2:
+    undertow:
+    io-threads: 16
+    worker-threads: 256
+    buffer-size: 1024
+    direct-buffers: true
+
+
+mybatis:
+  type-aliases-package: com.example.demo.domain.bean
+  mapper-locations: classpath:mapper/*/*.xml
+#  config-location: classpath:mybatis.xml
+spring:
+#  data:
+#    elasticsearch:
+#      cluster-nodes: 127.0.0.1:9300
+  datasource:
+    url: jdbc:mysql://192.168.180.161:3306/omsps?serverTimezone=GMT&useUnicode=true&characterEncoding=utf8
+    username: omsps
+    password: omsps123
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    druid:
+      initial-size: 50
+      max-active: 100
+      min-idle: 1
+      max-wait:  60000
+      pool-prepared-statements: true
+      max-pool-prepared-statement-per-connection-size:  20
+      max-open-prepared-statements: 20
+      validation-query:  SELECT 'X'
+      validation-query-timeout:  60000
+      web-stat-filter:
+        session-stat-enable: true
+        session-stat-max-count:  1000
+        principal-session-name:  druid.session.user
+        principal-cookie-name:  druid.cookie.user
+        profile-enable:  true
+      filters: stat
+      stat-view-servlet:
+        allow:
+        login-password:  druid123
+        login-username:  druid
+        enabled: true
+        url-pattern:  /druid/*
+        reset-enable:  false
+        deny:
