@@ -7,7 +7,6 @@ server:
     buffer-size: 1024
     direct-buffers: true
 
-
 mybatis:
   type-aliases-package: com.example.demo.domain.bean
   mapper-locations: classpath:mapper/*/*.xml
@@ -17,9 +16,9 @@ spring:
 #    elasticsearch:
 #      cluster-nodes: 127.0.0.1:9300
   datasource:
-    url: jdbc:mysql://192.168.180.161:3306/omsps?serverTimezone=GMT&useUnicode=true&characterEncoding=utf8
-    username: omsps
-    password: omsps123
+    url: jdbc:mysql://127.0.0.1:3306/omsps?serverTimezone=GMT&useUnicode=true&characterEncoding=utf8
+    username: root
+    password: root
     driver-class-name: com.mysql.cj.jdbc.Driver
     druid:
       initial-size: 50
